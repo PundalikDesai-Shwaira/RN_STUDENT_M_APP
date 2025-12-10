@@ -11,6 +11,13 @@ import React, {useEffect, useState} from 'react';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import { deleteCourse, getCourses} from '../../db/Database';
 
+// Header that will scroll away with the list:
+const ListHeader = () => (
+  <View style={styles.headerContainer}>
+    <Text style={styles.heading}>Courses</Text>
+  </View>
+);
+
 const Courses = () => {
   const navigation = useNavigation();
   const [courses, setCourses] = useState([]);
@@ -63,9 +70,13 @@ const Courses = () => {
       </View>
     );
   };
+
   return (
     <View style={styles.container}>
-      <FlatList data={courses} renderItem={renderItem} />
+      <FlatList data={courses} renderItem={renderItem} showsVerticalScrollIndicator={false}
+       ListHeaderComponent={ListHeader}
+        contentContainerStyle={{ paddingBottom: 320 }}
+        />
       <TouchableOpacity
         style={[styles.addCourseBtn, {bottom: 120}]}
         onPress={() => {
@@ -97,6 +108,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
+  heading:{
+    fontSize :28,
+    fontWeight: '700',
+    textAlign: 'center',
+    marginTop: 20,
+    marginBottom: 10,
+    color: 'black',
+  },
+
+  
   courseName: {
     fontSize: 30,
     fontWeight: '600',
