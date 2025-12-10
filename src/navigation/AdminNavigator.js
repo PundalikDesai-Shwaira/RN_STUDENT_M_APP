@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Courses from '../screens/admin/Courses';
@@ -8,6 +10,7 @@ const Stack = createNativeStackNavigator();
 const AdminNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{headerShown:false}}>
+           
             <Stack.Screen name="Courses" component={Courses} />
             <Stack.Screen name="AddCourse" component={AddCourse} />
             <Stack.Screen name="Subjects" component={Subjects} />
@@ -16,4 +19,3 @@ const AdminNavigator = () => {
     );
 }   
 export default AdminNavigator;  
-

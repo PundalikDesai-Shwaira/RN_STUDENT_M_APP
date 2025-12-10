@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
-import {db, deleteCourse, getCourses} from '../../db/Database';
+import { deleteCourse, getCourses} from '../../db/Database';
 
 const Courses = () => {
   const navigation = useNavigation();
@@ -67,25 +67,25 @@ const Courses = () => {
     <View style={styles.container}>
       <FlatList data={courses} renderItem={renderItem} />
       <TouchableOpacity
-        style={styles.addCourseBtn}
+        style={[styles.addCourseBtn, {bottom: 120}]}
         onPress={() => {
           navigation.navigate('AddCourse', {type: 'new'});
         }}>
         <Text style={styles.btnTxt}>+ Add Course</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={[styles.addCourseBtn, {bottom: 120}]}
+        style={[styles.addCourseBtn, {bottom: 180}]}
         onPress={() => {
           navigation.navigate('AddSubject', {type: 'new'});
         }}>
         <Text style={styles.btnTxt}>+ Add Subject</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={[styles.addCourseBtn, {bottom: 180}]}
+        style={[styles.addCourseBtn, {bottom: 240}]}
         onPress={() => {
           navigation.navigate('Subjects');
         }}>
-        <Text style={styles.btnTxt}>View Subjects</Text>
+        <Text style={styles.btnTxt}> View Subjects</Text>
       </TouchableOpacity>
     </View>
   );
